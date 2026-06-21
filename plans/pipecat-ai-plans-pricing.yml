@@ -1,0 +1,187 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Pipecat
+providerId: pipecat-ai
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- AI
+- Voice
+- Multimodal
+- Agents
+- Realtime
+- Framework
+- Plans
+description: >-
+  The Pipecat framework (the open-source pipecat-ai Python library) is free and
+  open source under the BSD 2-Clause license; there is no charge to use, embed,
+  or self-host it. Costs arise only from the third-party AI services (STT, LLM,
+  TTS, vision) and media transports a developer wires into a pipeline, billed
+  directly by those vendors. Pipecat Cloud, the optional hosted platform from
+  Daily, charges usage-based per-minute rates for agent compute profiles plus
+  add-ons (transport, recording, noise suppression, telephony). Representative
+  Pipecat Cloud rates below are not reconciled and should be confirmed against
+  the pricing page.
+notes: >-
+  OSS framework is free (BSD 2-Clause); no account or key required. Pipecat
+  Cloud rates and profiles change - verify on the Pipecat Cloud pricing page
+  and interactive calculator during reconciliation. Underlying AI service and
+  inference costs are billed by the respective providers, not by Pipecat.
+sources:
+- https://www.pipecat.ai
+- https://github.com/pipecat-ai/pipecat
+- https://www.daily.co/pricing/pipecat-cloud/
+- https://docs.pipecat.ai/overview/cloud
+plans:
+- id: pipecat-framework-oss
+  name: Pipecat Framework (Open Source)
+  type: free
+  description: >-
+    The pipecat-ai Python framework, free and open source under the BSD
+    2-Clause license. Self-hosted; no account, key, or usage charge from
+    Pipecat. Pay only the third-party AI services and transports you integrate.
+  entries:
+  - label: Open-Source Framework
+    name: oss_framework
+    type: free
+    metric: license
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.00 (BSD 2-Clause)
+    userMultiplied: false
+  elements:
+  - name: Pipelines and Frames
+  - name: Frame Processors
+  - name: AI Services (STT, LLM, TTS, Vision)
+  - name: Transports (Daily WebRTC, SmallWebRTC, LiveKit, WebSocket, Telephony)
+- id: pipecat-cloud-usage
+  name: Pipecat Cloud (Usage-Based)
+  type: usage
+  description: >-
+    Hosted deployment of Pipecat agents on Pipecat Cloud, billed per active
+    agent-minute by compute profile, with reserved-capacity discounts and
+    per-minute add-ons. Representative rates; not reconciled.
+  entries:
+  - label: agent-1x (0.5 vCPU / 1 GB)
+    name: agent_1x
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.01/min active, $0.0005/min reserved
+    userMultiplied: false
+  - label: agent-2x (1 vCPU / 2 GB)
+    name: agent_2x
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.02/min active, $0.0010/min reserved
+    userMultiplied: false
+  - label: agent-3x (1.5 vCPU / 3 GB)
+    name: agent_3x
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.03/min active, $0.0015/min reserved
+    userMultiplied: false
+  - label: Daily WebRTC Voice (1:1)
+    name: transport_voice
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  - label: Daily WebRTC Voice & Video
+    name: transport_voice_video
+    type: usage
+    metric: participant_minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.004 per participant minute
+    userMultiplied: false
+  - label: Recording (audio only)
+    name: recording_audio
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.005/min
+    userMultiplied: false
+  - label: Recording (audio & video)
+    name: recording_av
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.01349/min
+    userMultiplied: false
+  - label: Krisp VIVA Noise Suppression
+    name: krisp_viva
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free first 10k min/mo, then $0.0015/min
+    userMultiplied: false
+  - label: Telephony
+    name: telephony
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0.003-$0.02/min (SIP), $0.018/min (PSTN)
+    userMultiplied: false
+  elements:
+  - name: Hosted Agent Deployment
+  - name: Sessions API
+  - name: Unlimited Concurrency
+  - name: Recording and Transport Add-ons
+- id: pipecat-cloud-enterprise
+  name: Pipecat Cloud Enterprise
+  type: enterprise
+  description: >-
+    Bundled inference billing at scale, volume terms, and dedicated support.
+    Contact Daily.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales (help@daily.co)
+    userMultiplied: false
+  elements:
+  - name: Bundled Inference Billing
+  - name: Custom Volume Pricing
+  - name: Dedicated Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

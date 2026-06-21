@@ -1,0 +1,127 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Pipecat
+providerId: pipecat-ai
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- AI
+- Voice
+- Multimodal
+- Agents
+- Realtime
+- Framework
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of building and operating Pipecat-based voice and multimodal
+  agents. The Pipecat framework itself is free and open source (BSD 2-Clause),
+  so direct framework cost is zero. Spend accrues in two places: (1) the
+  third-party AI services and transports wired into a pipeline - STT, LLM, TTS,
+  vision, and media/telephony vendors, each billed directly by the provider;
+  and (2) optional Pipecat Cloud hosting, billed usage-based per active
+  agent-minute by compute profile (agent-1x/2x/3x), with reserved-capacity
+  discounts and per-minute add-ons for transport, recording, noise suppression,
+  and telephony. Rates are not reconciled here.
+notes: >-
+  Pipecat Cloud per-minute rates and agent profiles change; verify against the
+  Pipecat Cloud pricing page and calculator during reconciliation. The largest
+  variable cost in most deployments is downstream inference (LLM tokens) and
+  STT/TTS minutes billed by external vendors, not Pipecat.
+sources:
+- https://www.daily.co/pricing/pipecat-cloud/
+- https://docs.pipecat.ai/overview/cloud
+- https://github.com/pipecat-ai/pipecat
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Daily
+serviceCategory: AI and Machine Learning
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Pipecat Cloud
+  ServiceCategory: AI and Machine Learning
+  ProviderName: Pipecat
+  PublisherName: Daily
+  InvoiceIssuerName: Daily
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: agent_active_minutes
+  description: Minutes an agent runs actively on a Pipecat Cloud compute profile (agent-1x/2x/3x).
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - account
+  - agent
+  - profile
+- name: agent_reserved_minutes
+  description: Reserved-capacity agent-minutes billed at a discounted standby rate.
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - account
+  - agent
+  - profile
+- name: transport_participant_minutes
+  description: WebRTC voice/video participant-minutes for media transport.
+  unit: participant_minutes
+  aggregation: sum
+  dimensions:
+  - account
+  - transport
+- name: recording_minutes
+  description: Audio-only or audio-and-video recording minutes.
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - account
+  - recording_type
+- name: noise_suppression_minutes
+  description: Krisp VIVA noise-suppression minutes (free first 10k/mo, then per-minute).
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - account
+- name: telephony_minutes
+  description: SIP and PSTN telephony minutes.
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - account
+  - telephony_type
+- name: external_service_usage
+  description: Downstream STT/LLM/TTS/vision usage billed directly by third-party vendors, not by Pipecat.
+  unit: varies
+  aggregation: sum
+  dimensions:
+  - account
+  - provider
+  - service
+principles:
+- name: Visibility
+  description: Track Pipecat Cloud agent-minutes per profile plus each integrated STT/LLM/TTS vendor's own billing exports; the framework itself is free.
+- name: Allocation
+  description: Tag agents and secret sets per workload/team and map both Pipecat Cloud and downstream vendor spend to cost centers.
+- name: Optimization
+  description: Right-size compute profiles (agent-1x vs 3x), use reserved capacity for steady load, pick efficient STT/LLM/TTS models, and self-host the OSS framework where Cloud hosting is not needed.
+- name: Accountability
+  description: Assign owners per agent/project; review per-minute Cloud spend and downstream inference costs monthly against budget.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

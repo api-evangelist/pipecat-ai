@@ -1,0 +1,66 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Pipecat
+providerId: pipecat-ai
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- AI
+- Voice
+- Multimodal
+- Agents
+- Realtime
+- Framework
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The open-source Pipecat framework (the pipecat-ai Python library) imposes no
+  rate limits of its own - throughput is bounded only by the developer's own
+  infrastructure and by the rate limits of the third-party AI services (STT,
+  LLM, TTS, vision) and transports wired into a pipeline. The Pipecat Cloud
+  REST control API (https://api.pipecat.daily.co/v1) is the only Pipecat-owned
+  surface that could enforce limits; Pipecat Cloud advertises unlimited agent
+  concurrency. Specific control-API request limits are not published and are
+  not reconciled in this artifact.
+notes: >-
+  Verify any Pipecat Cloud control-API limits in the Pipecat Cloud dashboard
+  and REST reference on reconciliation. Realtime media throughput depends on
+  the chosen transport and the limits of integrated STT/LLM/TTS vendors.
+sources:
+- https://docs.pipecat.ai/api-reference/pipecat-cloud/rest-reference
+- https://docs.pipecat.ai/overview/cloud
+- https://github.com/pipecat-ai/pipecat
+responseCodes:
+  throttled: 429
+limits:
+- name: Framework (pipecat-ai library)
+  scope: self-hosted
+  metric: requests
+  limit: none imposed by framework
+  notes: Throughput bounded by developer infrastructure and integrated service limits, not by Pipecat.
+- name: Pipecat Cloud Agent Concurrency
+  scope: account
+  metric: concurrent_sessions
+  limit: unlimited (advertised)
+  notes: Pipecat Cloud markets unlimited agent concurrency; underlying compute is billed per active agent-minute.
+- name: Pipecat Cloud Control API Requests
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: REST control-plane request limits are not published; verify in dashboard/REST reference.
+- name: Third-Party Service Limits
+  scope: provider
+  metric: varies
+  limit: see each provider
+  notes: STT/LLM/TTS/vision vendors enforce their own RPM/TPM/quota limits passed through the pipeline.
+policies:
+- name: Downstream Provider Limits
+  description: Effective limits are usually set by the integrated STT/LLM/TTS/vision and transport vendors, not by Pipecat.
+- name: Backoff Strategy
+  description: Clients of the Pipecat Cloud REST API should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

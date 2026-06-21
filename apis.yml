@@ -1,0 +1,103 @@
+aid: pipecat-ai
+url: https://raw.githubusercontent.com/api-evangelist/pipecat-ai/refs/heads/main/apis.yml
+name: Pipecat
+kind: company
+description: Pipecat is an open-source Python framework (created by Daily) for building
+  realtime voice and multimodal AI agents. It orchestrates pipelines of frames through
+  pluggable services (STT, LLM, TTS, vision) and transports (Daily WebRTC, WebSocket,
+  SmallWebRTC, telephony). Pipecat Cloud adds a hosted platform with a REST control
+  API for deploying agents and starting/stopping agent sessions at scale.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- AI
+- Voice
+- Multimodal
+- Agents
+- Realtime
+- Framework
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: pipecat-ai:pipecat-framework-python-sdk
+  name: Pipecat Framework (Python SDK)
+  tags:
+  - Framework
+  - Python
+  - SDK
+  - Pipelines
+  - Frames
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.pipecat.ai/overview/introduction
+  baseURL: ''
+  properties:
+  - url: https://docs.pipecat.ai/overview/introduction
+    type: Documentation
+  - url: https://docs.pipecat.ai/server/introduction
+    type: APIReference
+  - url: https://github.com/pipecat-ai/pipecat
+    type: GitHub
+  description: Open-source (BSD 2-Clause) Python framework whose interface is the
+    pipecat-ai library, not a REST API. Applications wire FrameProcessors into a
+    Pipeline, where Frames carry audio, text, images, and control signals between
+    pluggable AI Services (STT, LLM, TTS, vision) and client Transports.
+- aid: pipecat-ai:pipecat-cloud-agents-sessions-api
+  name: Pipecat Cloud (Agents/Sessions API)
+  tags:
+  - Cloud
+  - Agents
+  - Sessions
+  - REST
+  - Deployment
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.pipecat.ai/api-reference/pipecat-cloud/rest-reference
+  baseURL: https://api.pipecat.daily.co/v1
+  properties:
+  - url: https://docs.pipecat.ai/overview/cloud
+    type: Documentation
+  - url: https://docs.pipecat.ai/api-reference/pipecat-cloud/rest-reference
+    type: APIReference
+  - url: openapi/pipecat-ai-openapi.yml
+    type: OpenAPI
+  description: Hosted REST control API (Bearer-token authenticated) for deploying
+    and operating Pipecat agents on Pipecat Cloud - create/list/update/delete agents,
+    start and stop agent sessions, manage builds, secrets, and organization
+    properties.
+- aid: pipecat-ai:transports-webrtc-websocket
+  name: Transports (WebRTC/WebSocket)
+  tags:
+  - Transports
+  - WebRTC
+  - WebSocket
+  - Telephony
+  - Realtime
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.pipecat.ai/server/services/supported-services
+  baseURL: ''
+  properties:
+  - url: https://docs.pipecat.ai/server/services/supported-services
+    type: Documentation
+  - url: https://github.com/pipecat-ai/pipecat
+    type: GitHub
+  description: Realtime media transport layer of the framework. Bidirectional audio,
+    video, and data flow over Daily WebRTC, SmallWebRTC, LiveKit, FastAPI WebSocket
+    server, and telephony serializers (Twilio, Telnyx, Plivo, Exotel). These are
+    SDK transport classes, not a hosted public REST/WebSocket control API.
+common:
+- type: GitHubOrganization
+  url: https://github.com/pipecat-ai
+- type: LinkedIn
+  url: https://www.linkedin.com/company/daily-co
+- type: Website
+  url: https://www.pipecat.ai
+- type: Documentation
+  url: https://docs.pipecat.ai
+- type: Plans
+  url: plans/pipecat-ai-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/pipecat-ai-rate-limits.yml
+- type: FinOps
+  url: finops/pipecat-ai-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

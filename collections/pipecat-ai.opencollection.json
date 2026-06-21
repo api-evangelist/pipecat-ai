@@ -1,0 +1,351 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipecat Cloud API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all agents.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/agents"
+          },
+          "docs": "List all agents in the organization."
+        },
+        {
+          "info": {
+            "name": "Create a new agent.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipecat.daily.co/v1/agents",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"<string>\",\n  \"image\": \"<string>\",\n  \"secretSet\": \"<string>\",\n  \"profile\": \"agent-1x\"\n}"
+            }
+          },
+          "docs": "Create a new agent from a container image and configuration."
+        },
+        {
+          "info": {
+            "name": "Get agent details.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/agents/{{agentId}}"
+          },
+          "docs": "Get details for a single agent."
+        },
+        {
+          "info": {
+            "name": "Update an agent.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pipecat.daily.co/v1/agents/{{agentId}}",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing agent's configuration."
+        },
+        {
+          "info": {
+            "name": "Delete an agent.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pipecat.daily.co/v1/agents/{{agentId}}"
+          },
+          "docs": "Delete an agent."
+        },
+        {
+          "info": {
+            "name": "Get agent logs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/agents/{{agentId}}/logs"
+          },
+          "docs": "Retrieve logs for an agent."
+        },
+        {
+          "info": {
+            "name": "List agent sessions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/agents/{{agentId}}/sessions"
+          },
+          "docs": "List sessions for an agent."
+        },
+        {
+          "info": {
+            "name": "Get agent session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/agents/{{agentId}}/sessions/{{sessionId}}"
+          },
+          "docs": "Get details for a specific agent session."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start a session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipecat.daily.co/v1/sessions/start",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"agentName\": \"<string>\",\n  \"body\": {}\n}"
+            }
+          },
+          "docs": "Start an agent session on demand."
+        },
+        {
+          "info": {
+            "name": "Stop a session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipecat.daily.co/v1/sessions/stop",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"sessionId\": \"<string>\"\n}"
+            }
+          },
+          "docs": "Stop a running agent session."
+        },
+        {
+          "info": {
+            "name": "Proxy to a session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipecat.daily.co/v1/sessions/{{sessionId}}/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Proxy an HTTP request to a running session (Session API)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Builds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List builds.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/builds"
+          },
+          "docs": "List builds."
+        },
+        {
+          "info": {
+            "name": "Create a build.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipecat.daily.co/v1/builds",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new build."
+        },
+        {
+          "info": {
+            "name": "Get build status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/builds/{{buildId}}"
+          },
+          "docs": "Get build status."
+        },
+        {
+          "info": {
+            "name": "Get build logs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/builds/{{buildId}}/logs"
+          },
+          "docs": "Get build logs."
+        },
+        {
+          "info": {
+            "name": "Get build upload URL.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/builds/upload-url"
+          },
+          "docs": "Get a pre-signed URL for uploading build context."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Secrets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List secret sets.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/secrets"
+          },
+          "docs": "List secret sets."
+        },
+        {
+          "info": {
+            "name": "Create or update a secret set.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipecat.daily.co/v1/secrets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update a secret set."
+        },
+        {
+          "info": {
+            "name": "Get a secret set.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/secrets/{{secretName}}"
+          },
+          "docs": "Get details for a secret set."
+        },
+        {
+          "info": {
+            "name": "Delete a secret set.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pipecat.daily.co/v1/secrets/{{secretName}}"
+          },
+          "docs": "Delete an entire secret set."
+        },
+        {
+          "info": {
+            "name": "Delete a secret.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pipecat.daily.co/v1/secrets/{{secretName}}/{{secretKey}}"
+          },
+          "docs": "Delete a specific secret from a set."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Organization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get organization properties.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/properties"
+          },
+          "docs": "Get organization properties."
+        },
+        {
+          "info": {
+            "name": "Update organization properties.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pipecat.daily.co/v1/properties",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update organization properties."
+        },
+        {
+          "info": {
+            "name": "List regions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/regions"
+          },
+          "docs": "List available regions."
+        }
+      ]
+    }
+  ]
+}

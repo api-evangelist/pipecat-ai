@@ -1,0 +1,114 @@
+aid: pipecat-ai
+name: Pipecat
+review:
+  question: Does Pipecat expose a documented public WebSocket API (control surface)?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Pipecat's only Pipecat-owned HTTP surface
+    is the Pipecat Cloud REST control API (https://api.pipecat.daily.co/v1),
+    which is request/response REST over HTTPS - there is no documented public
+    WebSocket or SSE control API to model. WebSocket in Pipecat exists solely
+    as an SDK media transport class (FastAPIWebsocketTransport / WebSocket
+    server transport and telephony serializers) configured in self-hosted
+    Python code, not as a hosted, documented public WebSocket endpoint. Per
+    API Evangelist scope, an in-code SDK transport is not an AsyncAPI-modelable
+    public messaging API.
+findings:
+  summary: |
+    Pipecat is, at its core, an open-source (BSD 2-Clause) Python framework
+    created by Daily for building realtime voice and multimodal AI agents. Its
+    interface is the pipecat-ai library - developers compose a Pipeline of
+    FrameProcessors through which Frames (audio, text, image, control) flow
+    between pluggable AI Services (STT, LLM, TTS, vision) and client
+    Transports. It is a framework/SDK, not a hosted REST API. Realtime media
+    moves over transports (Daily WebRTC, SmallWebRTC, LiveKit, Vonage,
+    FastAPI WebSocket server, and telephony serializers for Twilio/Telnyx/
+    Plivo/Exotel), which are SDK classes wired in code, not public endpoints.
+    Pipecat Cloud is a separate, optional hosted platform that DOES expose a
+    documented public REST control API at https://api.pipecat.daily.co/v1
+    (Bearer-token auth) for managing agents, starting/stopping sessions,
+    builds, secrets, properties, and regions. No documented public WebSocket
+    or SSE control API exists; WebSocket is a media transport only.
+  transports:
+    - protocol: Python SDK
+      scheme: in-process
+      note: Core framework interface - the pipecat-ai library (Pipeline, Frame, FrameProcessor, Service, Transport). Not a network API.
+      documented: true
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.pipecat.daily.co/v1
+      note: Pipecat Cloud REST control API for agents, sessions, builds, secrets, properties, regions. Bearer-token authenticated.
+      documented: true
+    - protocol: WebRTC
+      scheme: wss/udp
+      note: Realtime media transport via Daily, SmallWebRTC, LiveKit, Vonage. SDK transport classes, not a public control API.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      note: FastAPI WebSocket server transport and telephony serializers (Twilio/Telnyx/Plivo/Exotel). SDK media transport configured in self-hosted code, not a documented public WebSocket control API.
+      documented: true
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events control surface is documented for Pipecat or Pipecat Cloud.
+  endpointsConfirmedRest:
+    - GET    https://api.pipecat.daily.co/v1/agents
+    - POST   https://api.pipecat.daily.co/v1/agents
+    - GET    https://api.pipecat.daily.co/v1/agents/{id}
+    - PATCH  https://api.pipecat.daily.co/v1/agents/{id}
+    - DELETE https://api.pipecat.daily.co/v1/agents/{id}
+    - GET    https://api.pipecat.daily.co/v1/agents/{id}/logs
+    - GET    https://api.pipecat.daily.co/v1/agents/{id}/sessions
+    - GET    https://api.pipecat.daily.co/v1/agents/{id}/sessions/{session_id}
+    - POST   https://api.pipecat.daily.co/v1/sessions/start
+    - POST   https://api.pipecat.daily.co/v1/sessions/stop
+    - POST   https://api.pipecat.daily.co/v1/sessions/{id}/proxy
+    - POST   https://api.pipecat.daily.co/v1/public/{agentName}/start
+    - GET    https://api.pipecat.daily.co/v1/builds
+    - POST   https://api.pipecat.daily.co/v1/builds
+    - GET    https://api.pipecat.daily.co/v1/builds/{id}
+    - GET    https://api.pipecat.daily.co/v1/builds/{id}/logs
+    - GET    https://api.pipecat.daily.co/v1/builds/upload-url
+    - GET    https://api.pipecat.daily.co/v1/secrets
+    - POST   https://api.pipecat.daily.co/v1/secrets
+    - GET    https://api.pipecat.daily.co/v1/secrets/{name}
+    - DELETE https://api.pipecat.daily.co/v1/secrets/{name}
+    - DELETE https://api.pipecat.daily.co/v1/secrets/{name}/{key}
+    - GET    https://api.pipecat.daily.co/v1/properties
+    - PATCH  https://api.pipecat.daily.co/v1/properties
+    - GET    https://api.pipecat.daily.co/v1/regions
+sources:
+  - url: https://docs.pipecat.ai/overview/introduction
+    type: Documentation
+    note: Describes Pipecat as an open-source Python framework for voice and multimodal AI pipelines (client-server model).
+  - url: https://github.com/pipecat-ai/pipecat
+    type: GitHub
+    note: BSD 2-Clause license, Python; core concepts Pipeline, Frame, FrameProcessor, Services, Transports; pip install pipecat-ai.
+  - url: https://docs.pipecat.ai/server/services/supported-services
+    type: Documentation
+    note: Lists transports (Daily, SmallWebRTC, LiveKit, Vonage, FastAPI WebSocket, telephony serializers) and service categories (STT, LLM, TTS, vision, speech-to-speech).
+  - url: https://docs.pipecat.ai/overview/cloud
+    type: Documentation
+    note: Pipecat Cloud hosted platform; REST/SDK session management; start endpoint POST /v1/public/{agentName}/start; built-in WebRTC media.
+  - url: https://docs.pipecat.ai/api-reference/pipecat-cloud/rest-reference
+    type: APIReference
+    note: REST control API base https://api.pipecat.daily.co/v1, Bearer-token auth; agents, sessions, builds, secrets, properties, regions.
+  - url: https://www.daily.co/pricing/pipecat-cloud/
+    type: Documentation
+    note: Pipecat Cloud usage-based pricing - per-minute agent profiles plus transport, recording, noise-suppression, and telephony add-ons.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    The core product is a framework/SDK (pipecat-ai), modeled as the Pipecat
+    Framework (Python SDK) sub-API with GitHub/Documentation references rather
+    than an OpenAPI. Pipecat Cloud's documented public REST control API is
+    modeled in openapi/pipecat-ai-openapi.yml. No documented public WebSocket
+    or SSE control surface exists - WebSocket appears only as an SDK media
+    transport - so no AsyncAPI document was authored.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

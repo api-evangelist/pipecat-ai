@@ -1,0 +1,442 @@
+{
+  "info": {
+    "name": "Pipecat Cloud API",
+    "description": "REST control API for Pipecat Cloud, the hosted platform for deploying and operating agents built with the open-source Pipecat Python framework. The Pipecat framework itself is an SDK and does not expose a REST API; this collection covers only the Pipecat Cloud control plane (agents, sessions, builds, secrets, organization).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.pipecat.daily.co/v1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Agents",
+      "item": [
+        {
+          "name": "List all agents.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/agents",
+              "host": ["{{baseUrl}}"],
+              "path": ["agents"]
+            },
+            "description": "List all agents in the organization."
+          },
+          "response": []
+        },
+        {
+          "name": "Create a new agent.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"image\": \"<string>\",\n  \"secretSet\": \"<string>\",\n  \"profile\": \"agent-1x\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/agents",
+              "host": ["{{baseUrl}}"],
+              "path": ["agents"]
+            },
+            "description": "Create a new agent from a container image and configuration."
+          },
+          "response": []
+        },
+        {
+          "name": "Get agent details.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/agents/{{agentId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["agents", "{{agentId}}"]
+            },
+            "description": "Get details for a single agent."
+          },
+          "response": []
+        },
+        {
+          "name": "Update an agent.",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/agents/{{agentId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["agents", "{{agentId}}"]
+            },
+            "description": "Update an existing agent's configuration."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete an agent.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/agents/{{agentId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["agents", "{{agentId}}"]
+            },
+            "description": "Delete an agent."
+          },
+          "response": []
+        },
+        {
+          "name": "Get agent logs.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/agents/{{agentId}}/logs",
+              "host": ["{{baseUrl}}"],
+              "path": ["agents", "{{agentId}}", "logs"]
+            },
+            "description": "Retrieve logs for an agent."
+          },
+          "response": []
+        },
+        {
+          "name": "List agent sessions.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/agents/{{agentId}}/sessions",
+              "host": ["{{baseUrl}}"],
+              "path": ["agents", "{{agentId}}", "sessions"]
+            },
+            "description": "List sessions for an agent."
+          },
+          "response": []
+        },
+        {
+          "name": "Get agent session.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/agents/{{agentId}}/sessions/{{sessionId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["agents", "{{agentId}}", "sessions", "{{sessionId}}"]
+            },
+            "description": "Get details for a specific agent session."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sessions",
+      "item": [
+        {
+          "name": "Start a session.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agentName\": \"<string>\",\n  \"body\": {}\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/sessions/start",
+              "host": ["{{baseUrl}}"],
+              "path": ["sessions", "start"]
+            },
+            "description": "Start an agent session on demand. The public per-agent form is POST /public/{agentName}/start."
+          },
+          "response": []
+        },
+        {
+          "name": "Stop a session.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sessionId\": \"<string>\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/sessions/stop",
+              "host": ["{{baseUrl}}"],
+              "path": ["sessions", "stop"]
+            },
+            "description": "Stop a running agent session."
+          },
+          "response": []
+        },
+        {
+          "name": "Proxy to a session.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/sessions/{{sessionId}}/proxy",
+              "host": ["{{baseUrl}}"],
+              "path": ["sessions", "{{sessionId}}", "proxy"]
+            },
+            "description": "Proxy an HTTP request to a running session (Session API)."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Builds",
+      "item": [
+        {
+          "name": "List builds.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/builds",
+              "host": ["{{baseUrl}}"],
+              "path": ["builds"]
+            },
+            "description": "List builds."
+          },
+          "response": []
+        },
+        {
+          "name": "Create a build.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/builds",
+              "host": ["{{baseUrl}}"],
+              "path": ["builds"]
+            },
+            "description": "Create a new build."
+          },
+          "response": []
+        },
+        {
+          "name": "Get build status.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/builds/{{buildId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["builds", "{{buildId}}"]
+            },
+            "description": "Get build status."
+          },
+          "response": []
+        },
+        {
+          "name": "Get build logs.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/builds/{{buildId}}/logs",
+              "host": ["{{baseUrl}}"],
+              "path": ["builds", "{{buildId}}", "logs"]
+            },
+            "description": "Get build logs."
+          },
+          "response": []
+        },
+        {
+          "name": "Get build upload URL.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/builds/upload-url",
+              "host": ["{{baseUrl}}"],
+              "path": ["builds", "upload-url"]
+            },
+            "description": "Get a pre-signed URL for uploading build context."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Secrets",
+      "item": [
+        {
+          "name": "List secret sets.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/secrets",
+              "host": ["{{baseUrl}}"],
+              "path": ["secrets"]
+            },
+            "description": "List secret sets."
+          },
+          "response": []
+        },
+        {
+          "name": "Create or update a secret set.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/secrets",
+              "host": ["{{baseUrl}}"],
+              "path": ["secrets"]
+            },
+            "description": "Create or update a secret set."
+          },
+          "response": []
+        },
+        {
+          "name": "Get a secret set.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/secrets/{{secretName}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["secrets", "{{secretName}}"]
+            },
+            "description": "Get details for a secret set."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete a secret set.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/secrets/{{secretName}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["secrets", "{{secretName}}"]
+            },
+            "description": "Delete an entire secret set."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete a secret.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/secrets/{{secretName}}/{{secretKey}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["secrets", "{{secretName}}", "{{secretKey}}"]
+            },
+            "description": "Delete a specific secret from a set."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Organization",
+      "item": [
+        {
+          "name": "Get organization properties.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/properties",
+              "host": ["{{baseUrl}}"],
+              "path": ["properties"]
+            },
+            "description": "Get organization properties."
+          },
+          "response": []
+        },
+        {
+          "name": "Update organization properties.",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/properties",
+              "host": ["{{baseUrl}}"],
+              "path": ["properties"]
+            },
+            "description": "Update organization properties."
+          },
+          "response": []
+        },
+        {
+          "name": "List regions.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/regions",
+              "host": ["{{baseUrl}}"],
+              "path": ["regions"]
+            },
+            "description": "List available regions."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
