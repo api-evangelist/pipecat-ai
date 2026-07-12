@@ -84,6 +84,10 @@ apis:
     server, and telephony serializers (Twilio, Telnyx, Plivo, Exotel). These are
     SDK transport classes, not a hosted public REST/WebSocket control API.
 common:
+- type: DomainSecurity
+  url: security/pipecat-ai-domain-security.yml
+- type: Authentication
+  url: authentication/pipecat-ai-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/pipecat-ai
 - type: LinkedIn

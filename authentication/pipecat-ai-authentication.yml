@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/pipecat-ai-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Private API key from the Pipecat Cloud dashboard, sent as a Bearer token.
+  sources:
+  - openapi/pipecat-ai-openapi.yml
