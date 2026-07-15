@@ -84,6 +84,8 @@ apis:
     server, and telephony serializers (Twilio, Telnyx, Plivo, Exotel). These are
     SDK transport classes, not a hosted public REST/WebSocket control API.
 common:
+- type: AgenticAccess
+  url: agentic-access/pipecat-ai-agentic-access.yml
 - type: DomainSecurity
   url: security/pipecat-ai-domain-security.yml
 - type: Authentication
