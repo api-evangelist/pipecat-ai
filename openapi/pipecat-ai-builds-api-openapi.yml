@@ -1,0 +1,83 @@
+openapi: 3.0.1
+info:
+  title: Pipecat Cloud Agents Builds API
+  description: REST control API for Pipecat Cloud, the hosted platform for deploying and operating agents built with the open-source Pipecat Python framework. The Pipecat framework itself is an SDK (the pipecat-ai Python library) and does not expose a REST API; its interface is Python Pipelines, Frames, FrameProcessors, Services, and Transports (Daily WebRTC, SmallWebRTC, LiveKit, FastAPI WebSocket, and telephony serializers). This document models only the documented Pipecat Cloud REST control plane - managing agents, starting and stopping sessions, builds, secrets, organization properties, and regions. Realtime media (audio/video) flows over WebRTC/WebSocket transports negotiated out of band and is not modeled as REST here.
+  termsOfService: https://www.daily.co/legal/terms-of-service/
+  contact:
+    name: Pipecat / Daily Support
+    email: help@daily.co
+  license:
+    name: BSD-2-Clause (Pipecat framework)
+    url: https://github.com/pipecat-ai/pipecat/blob/main/LICENSE
+  version: '1.0'
+servers:
+- url: https://api.pipecat.daily.co/v1
+  description: Pipecat Cloud REST control API
+security:
+- bearerAuth: []
+tags:
+- name: Builds
+  description: Build container images for agent deployments.
+paths:
+  /builds:
+    get:
+      operationId: listBuilds
+      tags:
+      - Builds
+      summary: List builds.
+      responses:
+        '200':
+          description: A list of builds.
+    post:
+      operationId: createBuild
+      tags:
+      - Builds
+      summary: Create a new build.
+      responses:
+        '201':
+          description: Build created.
+  /builds/{id}:
+    get:
+      operationId: getBuild
+      tags:
+      - Builds
+      summary: Get build status.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Build status.
+  /builds/{id}/logs:
+    get:
+      operationId: getBuildLogs
+      tags:
+      - Builds
+      summary: Get build logs.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Build logs.
+  /builds/upload-url:
+    get:
+      operationId: getBuildUploadUrl
+      tags:
+      - Builds
+      summary: Get a pre-signed URL for uploading build context.
+      responses:
+        '200':
+          description: Pre-signed upload URL.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Private API key from the Pipecat Cloud dashboard, sent as a Bearer token.

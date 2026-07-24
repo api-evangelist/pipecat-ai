@@ -1,0 +1,89 @@
+openapi: 3.0.1
+info:
+  title: Pipecat Cloud Agents Sessions API
+  description: REST control API for Pipecat Cloud, the hosted platform for deploying and operating agents built with the open-source Pipecat Python framework. The Pipecat framework itself is an SDK (the pipecat-ai Python library) and does not expose a REST API; its interface is Python Pipelines, Frames, FrameProcessors, Services, and Transports (Daily WebRTC, SmallWebRTC, LiveKit, FastAPI WebSocket, and telephony serializers). This document models only the documented Pipecat Cloud REST control plane - managing agents, starting and stopping sessions, builds, secrets, organization properties, and regions. Realtime media (audio/video) flows over WebRTC/WebSocket transports negotiated out of band and is not modeled as REST here.
+  termsOfService: https://www.daily.co/legal/terms-of-service/
+  contact:
+    name: Pipecat / Daily Support
+    email: help@daily.co
+  license:
+    name: BSD-2-Clause (Pipecat framework)
+    url: https://github.com/pipecat-ai/pipecat/blob/main/LICENSE
+  version: '1.0'
+servers:
+- url: https://api.pipecat.daily.co/v1
+  description: Pipecat Cloud REST control API
+security:
+- bearerAuth: []
+tags:
+- name: Sessions
+  description: Start, stop, and proxy requests to running agent sessions.
+paths:
+  /sessions/start:
+    post:
+      operationId: startSession
+      tags:
+      - Sessions
+      summary: Start an agent session on demand.
+      description: Starts a new session for a deployed agent. The public per-agent form of this operation is also exposed as POST /public/{agentName}/start.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionStartRequest'
+      responses:
+        '200':
+          description: Session started.
+  /sessions/stop:
+    post:
+      operationId: stopSession
+      tags:
+      - Sessions
+      summary: Stop a running agent session.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionStopRequest'
+      responses:
+        '200':
+          description: Session stopped.
+  /sessions/{id}/proxy:
+    post:
+      operationId: proxySession
+      tags:
+      - Sessions
+      summary: Proxy an HTTP request to a running session (Session API).
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Proxied response from the running session.
+components:
+  schemas:
+    SessionStartRequest:
+      type: object
+      properties:
+        agentName:
+          type: string
+          description: Name of the deployed agent to start.
+        body:
+          type: object
+          description: Arbitrary JSON payload passed to the agent at session start.
+    SessionStopRequest:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          description: Identifier of the running session to stop.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Private API key from the Pipecat Cloud dashboard, sent as a Bearer token.
