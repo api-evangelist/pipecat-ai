@@ -1,0 +1,22 @@
+{
+  "provider": "pipecat-ai",
+  "sources": [
+    "pipecat-ai-agents-api-openapi.yml",
+    "pipecat-ai-builds-api-openapi.yml",
+    "pipecat-ai-organization-api-openapi.yml",
+    "pipecat-ai-secrets-api-openapi.yml",
+    "pipecat-ai-sessions-api-openapi.yml"
+  ],
+  "outputs": [
+    "pipecat-ai-agents-api-openapi.yml",
+    "pipecat-ai-builds-api-openapi.yml",
+    "pipecat-ai-organization-api-openapi.yml",
+    "pipecat-ai-secrets-api-openapi.yml",
+    "pipecat-ai-sessions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

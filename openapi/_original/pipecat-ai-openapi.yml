@@ -1,0 +1,372 @@
+openapi: 3.0.1
+info:
+  title: Pipecat Cloud API
+  description: >-
+    REST control API for Pipecat Cloud, the hosted platform for deploying and
+    operating agents built with the open-source Pipecat Python framework. The
+    Pipecat framework itself is an SDK (the pipecat-ai Python library) and does
+    not expose a REST API; its interface is Python Pipelines, Frames,
+    FrameProcessors, Services, and Transports (Daily WebRTC, SmallWebRTC,
+    LiveKit, FastAPI WebSocket, and telephony serializers). This document models
+    only the documented Pipecat Cloud REST control plane - managing agents,
+    starting and stopping sessions, builds, secrets, organization properties,
+    and regions. Realtime media (audio/video) flows over WebRTC/WebSocket
+    transports negotiated out of band and is not modeled as REST here.
+  termsOfService: https://www.daily.co/legal/terms-of-service/
+  contact:
+    name: Pipecat / Daily Support
+    email: help@daily.co
+  license:
+    name: BSD-2-Clause (Pipecat framework)
+    url: https://github.com/pipecat-ai/pipecat/blob/main/LICENSE
+  version: '1.0'
+servers:
+  - url: https://api.pipecat.daily.co/v1
+    description: Pipecat Cloud REST control API
+security:
+  - bearerAuth: []
+tags:
+  - name: Agents
+    description: Create, list, update, and delete deployed agents and inspect logs and sessions.
+  - name: Sessions
+    description: Start, stop, and proxy requests to running agent sessions.
+  - name: Builds
+    description: Build container images for agent deployments.
+  - name: Secrets
+    description: Manage secret sets and individual secrets used by agents.
+  - name: Organization
+    description: Organization properties and available regions.
+paths:
+  /agents:
+    get:
+      operationId: listAgents
+      tags:
+        - Agents
+      summary: List all agents in the organization.
+      responses:
+        '200':
+          description: A list of agents.
+    post:
+      operationId: createAgent
+      tags:
+        - Agents
+      summary: Create a new agent from a container image and configuration.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentCreateRequest'
+      responses:
+        '201':
+          description: Agent created.
+  /agents/{id}:
+    get:
+      operationId: getAgent
+      tags:
+        - Agents
+      summary: Get details for a single agent.
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+      responses:
+        '200':
+          description: Agent details.
+    patch:
+      operationId: updateAgent
+      tags:
+        - Agents
+      summary: Update an existing agent's configuration.
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentCreateRequest'
+      responses:
+        '200':
+          description: Agent updated.
+    delete:
+      operationId: deleteAgent
+      tags:
+        - Agents
+      summary: Delete an agent.
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+      responses:
+        '204':
+          description: Agent deleted.
+  /agents/{id}/logs:
+    get:
+      operationId: getAgentLogs
+      tags:
+        - Agents
+      summary: Retrieve logs for an agent.
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+      responses:
+        '200':
+          description: Agent logs.
+  /agents/{id}/sessions:
+    get:
+      operationId: listAgentSessions
+      tags:
+        - Agents
+      summary: List sessions for an agent.
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+      responses:
+        '200':
+          description: A list of sessions.
+  /agents/{id}/sessions/{session_id}:
+    get:
+      operationId: getAgentSession
+      tags:
+        - Agents
+      summary: Get details for a specific agent session.
+      parameters:
+        - $ref: '#/components/parameters/AgentId'
+        - name: session_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session details.
+  /sessions/start:
+    post:
+      operationId: startSession
+      tags:
+        - Sessions
+      summary: Start an agent session on demand.
+      description: >-
+        Starts a new session for a deployed agent. The public per-agent form
+        of this operation is also exposed as
+        POST /public/{agentName}/start.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionStartRequest'
+      responses:
+        '200':
+          description: Session started.
+  /sessions/stop:
+    post:
+      operationId: stopSession
+      tags:
+        - Sessions
+      summary: Stop a running agent session.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionStopRequest'
+      responses:
+        '200':
+          description: Session stopped.
+  /sessions/{id}/proxy:
+    post:
+      operationId: proxySession
+      tags:
+        - Sessions
+      summary: Proxy an HTTP request to a running session (Session API).
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Proxied response from the running session.
+  /builds:
+    get:
+      operationId: listBuilds
+      tags:
+        - Builds
+      summary: List builds.
+      responses:
+        '200':
+          description: A list of builds.
+    post:
+      operationId: createBuild
+      tags:
+        - Builds
+      summary: Create a new build.
+      responses:
+        '201':
+          description: Build created.
+  /builds/{id}:
+    get:
+      operationId: getBuild
+      tags:
+        - Builds
+      summary: Get build status.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Build status.
+  /builds/{id}/logs:
+    get:
+      operationId: getBuildLogs
+      tags:
+        - Builds
+      summary: Get build logs.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Build logs.
+  /builds/upload-url:
+    get:
+      operationId: getBuildUploadUrl
+      tags:
+        - Builds
+      summary: Get a pre-signed URL for uploading build context.
+      responses:
+        '200':
+          description: Pre-signed upload URL.
+  /secrets:
+    get:
+      operationId: listSecrets
+      tags:
+        - Secrets
+      summary: List secret sets.
+      responses:
+        '200':
+          description: A list of secret sets.
+    post:
+      operationId: createSecret
+      tags:
+        - Secrets
+      summary: Create or update a secret set.
+      responses:
+        '200':
+          description: Secret set created or updated.
+  /secrets/{name}:
+    get:
+      operationId: getSecret
+      tags:
+        - Secrets
+      summary: Get details for a secret set.
+      parameters:
+        - $ref: '#/components/parameters/SecretName'
+      responses:
+        '200':
+          description: Secret set details.
+    delete:
+      operationId: deleteSecret
+      tags:
+        - Secrets
+      summary: Delete an entire secret set.
+      parameters:
+        - $ref: '#/components/parameters/SecretName'
+      responses:
+        '204':
+          description: Secret set deleted.
+  /secrets/{name}/{key}:
+    delete:
+      operationId: deleteSecretKey
+      tags:
+        - Secrets
+      summary: Delete a specific secret from a set.
+      parameters:
+        - $ref: '#/components/parameters/SecretName'
+        - name: key
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Secret deleted.
+  /properties:
+    get:
+      operationId: getProperties
+      tags:
+        - Organization
+      summary: Get organization properties.
+      responses:
+        '200':
+          description: Organization properties.
+    patch:
+      operationId: updateProperties
+      tags:
+        - Organization
+      summary: Update organization properties.
+      responses:
+        '200':
+          description: Organization properties updated.
+  /regions:
+    get:
+      operationId: listRegions
+      tags:
+        - Organization
+      summary: List available regions.
+      responses:
+        '200':
+          description: A list of regions.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Private API key from the Pipecat Cloud dashboard, sent as a Bearer token.
+  parameters:
+    AgentId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    SecretName:
+      name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    AgentCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Agent name.
+        image:
+          type: string
+          description: Container image reference for the agent.
+        secretSet:
+          type: string
+          description: Name of the secret set to attach.
+        profile:
+          type: string
+          description: Compute profile (e.g., agent-1x, agent-2x, agent-3x).
+    SessionStartRequest:
+      type: object
+      properties:
+        agentName:
+          type: string
+          description: Name of the deployed agent to start.
+        body:
+          type: object
+          description: Arbitrary JSON payload passed to the agent at session start.
+    SessionStopRequest:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          description: Identifier of the running session to stop.
