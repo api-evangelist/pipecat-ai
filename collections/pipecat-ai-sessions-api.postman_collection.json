@@ -1,0 +1,309 @@
+{
+  "item": [
+    {
+      "id": "39957872-0b80-4c63-8518-84a026f87273",
+      "name": "Sessions",
+      "description": {
+        "content": "Start, stop, and proxy requests to running agent sessions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "58effd88-aabd-44b1-841d-eaeacab8140f",
+          "name": "Start an agent session on demand.",
+          "request": {
+            "name": "Start an agent session on demand.",
+            "description": {
+              "content": "Starts a new session for a deployed agent. The public per-agent form of this operation is also exposed as POST /public/{agentName}/start.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agentName\": \"<string>\",\n  \"body\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "031eac49-c196-44da-b782-df8dc9057b87",
+              "name": "Session started.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agentName\": \"<string>\",\n  \"body\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c975ee21-4570-4a64-ab76-bd1c2b4dd87f",
+          "name": "Stop a running agent session.",
+          "request": {
+            "name": "Stop a running agent session.",
+            "description": {},
+            "url": {
+              "path": [
+                "sessions",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sessionId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f8de1d84-4c25-4647-b767-44386b78285b",
+              "name": "Session stopped.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sessionId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d6f1624-5318-4f5d-aedb-4229243654a3",
+          "name": "Proxy an HTTP request to a running session (Session API).",
+          "request": {
+            "name": "Proxy an HTTP request to a running session (Session API).",
+            "description": {},
+            "url": {
+              "path": [
+                "sessions",
+                ":id",
+                "proxy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33e5b824-6a39-46e2-acc8-16d3c5945b81",
+              "name": "Proxied response from the running session.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":id",
+                    "proxy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pipecat.daily.co/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "007b7670-91d9-4f34-9be2-87a9f8eaee4e",
+    "name": "Pipecat Cloud Agents Sessions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST control API for Pipecat Cloud, the hosted platform for deploying and operating agents built with the open-source Pipecat Python framework. The Pipecat framework itself is an SDK (the pipecat-ai Python library) and does not expose a REST API; its interface is Python Pipelines, Frames, FrameProcessors, Services, and Transports (Daily WebRTC, SmallWebRTC, LiveKit, FastAPI WebSocket, and telephony serializers). This document models only the documented Pipecat Cloud REST control plane - managing agents, starting and stopping sessions, builds, secrets, organization properties, and regions. Realtime media (audio/video) flows over WebRTC/WebSocket transports negotiated out of band and is not modeled as REST here.\n\nContact Support:\n Name: Pipecat / Daily Support\n Email: help@daily.co",
+      "type": "text/plain"
+    }
+  }
+}

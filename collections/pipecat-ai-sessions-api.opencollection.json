@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipecat Cloud Agents Sessions API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start an agent session on demand.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipecat.daily.co/v1/sessions/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts a new session for a deployed agent. The public per-agent form of this operation is also exposed as POST /public/{agentName}/start."
+        },
+        {
+          "info": {
+            "name": "Stop a running agent session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipecat.daily.co/v1/sessions/stop",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stop a running agent session."
+        },
+        {
+          "info": {
+            "name": "Proxy an HTTP request to a running session (Session API).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipecat.daily.co/v1/sessions/:id/proxy",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Proxy an HTTP request to a running session (Session API)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipecat Cloud Agents Organization API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get organization properties.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/properties"
+          },
+          "docs": "Get organization properties."
+        },
+        {
+          "info": {
+            "name": "Update organization properties.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pipecat.daily.co/v1/properties"
+          },
+          "docs": "Update organization properties."
+        },
+        {
+          "info": {
+            "name": "List available regions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/regions"
+          },
+          "docs": "List available regions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

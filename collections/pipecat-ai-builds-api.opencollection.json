@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pipecat Cloud Agents Builds API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Builds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List builds.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/builds"
+          },
+          "docs": "List builds."
+        },
+        {
+          "info": {
+            "name": "Create a new build.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pipecat.daily.co/v1/builds"
+          },
+          "docs": "Create a new build."
+        },
+        {
+          "info": {
+            "name": "Get build status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/builds/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get build status."
+        },
+        {
+          "info": {
+            "name": "Get build logs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/builds/:id/logs",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get build logs."
+        },
+        {
+          "info": {
+            "name": "Get a pre-signed URL for uploading build context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pipecat.daily.co/v1/builds/upload-url"
+          },
+          "docs": "Get a pre-signed URL for uploading build context."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
