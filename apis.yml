@@ -30,7 +30,7 @@ tags:
 - Framework
 created: '2026-06-21'
 modified: '2026-06-21'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: pipecat-ai:pipecat-framework-python-sdk
   name: Pipecat Framework (Python SDK)
