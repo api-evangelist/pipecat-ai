@@ -1,0 +1,37 @@
+slug: pipecat-ai
+provider: Pipecat
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Builds
+  spec_file: pipecat-ai-builds-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.75
+  evidence: POST /builds createBuild Create a new build.; GET /builds/{id}/logs Get build logs.; GET /builds/upload-url
+    Get a pre-signed URL for uploading build context.
+  reason: Operations create builds from uploaded build context and expose build status and logs — build-pipeline
+    and artefact production, i.e. continuous integration. Some residual ambiguity with deployment orchestration
+    keeps this below 0.8.
+- tag: Secrets
+  spec_file: pipecat-ai-secrets-api-openapi.yml
+  capability_id: BC-4210.60
+  capability_id_l1: BC-4210
+  capability_name: Configuration & Secrets Management
+  confidence: 0.7
+  evidence: POST /secrets createSecret Create or update a secret set.; DELETE /secrets/{name}/{key} Delete
+    a specific secret from a set.
+  reason: Lifecycle management of secret sets consumed at runtime by deployed agents maps to configuration
+    and secrets management. Held at 0.7 because an identity/credential-management reading is possible
+    and the spec gives no detail on consumption.
