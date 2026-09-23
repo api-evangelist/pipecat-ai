@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Pipecat Cloud Agents API
-  description: REST control API for Pipecat Cloud, the hosted platform for deploying and operating agents built with the open-source Pipecat Python framework. The Pipecat framework itself is an SDK (the pipecat-ai Python library) and does not expose a REST API; its interface is Python Pipelines, Frames, FrameProcessors, Services, and Transports (Daily WebRTC, SmallWebRTC, LiveKit, FastAPI WebSocket, and telephony serializers). This document models only the documented Pipecat Cloud REST control plane - managing agents, starting and stopping sessions, builds, secrets, organization properties, and regions. Realtime media (audio/video) flows over WebRTC/WebSocket transports negotiated out of band and is not modeled as REST here.
+  description: REST control API for Pipecat Cloud, the hosted platform for deploying and operating agents built with the open-source Pipecat Python framework.
   termsOfService: https://www.daily.co/legal/terms-of-service/
   contact:
     name: Pipecat / Daily Support
@@ -24,7 +24,7 @@ paths:
       operationId: listAgents
       tags:
       - Agents
-      summary: List all agents in the organization.
+      summary: List all agents in the organization
       responses:
         '200':
           description: A list of agents.
@@ -32,7 +32,7 @@ paths:
       operationId: createAgent
       tags:
       - Agents
-      summary: Create a new agent from a container image and configuration.
+      summary: Create a new agent from a container image and configuration
       requestBody:
         required: true
         content:
@@ -47,7 +47,7 @@ paths:
       operationId: getAgent
       tags:
       - Agents
-      summary: Get details for a single agent.
+      summary: Get details for a single agent
       parameters:
       - $ref: '#/components/parameters/AgentId'
       responses:
@@ -57,7 +57,7 @@ paths:
       operationId: updateAgent
       tags:
       - Agents
-      summary: Update an existing agent's configuration.
+      summary: Update an existing agent's configuration
       parameters:
       - $ref: '#/components/parameters/AgentId'
       requestBody:
@@ -73,7 +73,7 @@ paths:
       operationId: deleteAgent
       tags:
       - Agents
-      summary: Delete an agent.
+      summary: Delete an agent
       parameters:
       - $ref: '#/components/parameters/AgentId'
       responses:
@@ -84,7 +84,7 @@ paths:
       operationId: getAgentLogs
       tags:
       - Agents
-      summary: Retrieve logs for an agent.
+      summary: Retrieve logs for an agent
       parameters:
       - $ref: '#/components/parameters/AgentId'
       responses:
@@ -95,7 +95,7 @@ paths:
       operationId: listAgentSessions
       tags:
       - Agents
-      summary: List sessions for an agent.
+      summary: List sessions for an agent
       parameters:
       - $ref: '#/components/parameters/AgentId'
       responses:
@@ -106,7 +106,7 @@ paths:
       operationId: getAgentSession
       tags:
       - Agents
-      summary: Get details for a specific agent session.
+      summary: Get details for a specific agent session
       parameters:
       - $ref: '#/components/parameters/AgentId'
       - name: session_id

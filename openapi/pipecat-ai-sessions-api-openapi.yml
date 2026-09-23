@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipecat Cloud Agents Sessions API
-  description: REST control API for Pipecat Cloud, the hosted platform for deploying and operating agents built with the open-source Pipecat Python framework. The Pipecat framework itself is an SDK (the pipecat-ai Python library) and does not expose a REST API; its interface is Python Pipelines, Frames, FrameProcessors, Services, and Transports (Daily WebRTC, SmallWebRTC, LiveKit, FastAPI WebSocket, and telephony serializers). This document models only the documented Pipecat Cloud REST control plane - managing agents, starting and stopping sessions, builds, secrets, organization properties, and regions. Realtime media (audio/video) flows over WebRTC/WebSocket transports negotiated out of band and is not modeled as REST here.
+  title: Pipecat Cloud Sessions API
+  description: REST control API for Pipecat Cloud, the hosted platform for deploying and operating agents built with the open-source Pipecat Python framework.
   termsOfService: https://www.daily.co/legal/terms-of-service/
   contact:
     name: Pipecat / Daily Support
@@ -24,7 +24,7 @@ paths:
       operationId: startSession
       tags:
       - Sessions
-      summary: Start an agent session on demand.
+      summary: Start an agent session on demand
       description: Starts a new session for a deployed agent. The public per-agent form of this operation is also exposed as POST /public/{agentName}/start.
       requestBody:
         required: true
@@ -40,7 +40,7 @@ paths:
       operationId: stopSession
       tags:
       - Sessions
-      summary: Stop a running agent session.
+      summary: Stop a running agent session
       requestBody:
         required: true
         content:
@@ -55,7 +55,7 @@ paths:
       operationId: proxySession
       tags:
       - Sessions
-      summary: Proxy an HTTP request to a running session (Session API).
+      summary: Proxy an HTTP request to a running session (Session API)
       parameters:
       - name: id
         in: path
@@ -67,6 +67,12 @@ paths:
           description: Proxied response from the running session.
 components:
   schemas:
+    SessionStopRequest:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          description: Identifier of the running session to stop.
     SessionStartRequest:
       type: object
       properties:
@@ -76,12 +82,6 @@ components:
         body:
           type: object
           description: Arbitrary JSON payload passed to the agent at session start.
-    SessionStopRequest:
-      type: object
-      properties:
-        sessionId:
-          type: string
-          description: Identifier of the running session to stop.
   securitySchemes:
     bearerAuth:
       type: http

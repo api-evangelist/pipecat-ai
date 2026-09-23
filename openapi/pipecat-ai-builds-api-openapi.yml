@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipecat Cloud Agents Builds API
-  description: REST control API for Pipecat Cloud, the hosted platform for deploying and operating agents built with the open-source Pipecat Python framework. The Pipecat framework itself is an SDK (the pipecat-ai Python library) and does not expose a REST API; its interface is Python Pipelines, Frames, FrameProcessors, Services, and Transports (Daily WebRTC, SmallWebRTC, LiveKit, FastAPI WebSocket, and telephony serializers). This document models only the documented Pipecat Cloud REST control plane - managing agents, starting and stopping sessions, builds, secrets, organization properties, and regions. Realtime media (audio/video) flows over WebRTC/WebSocket transports negotiated out of band and is not modeled as REST here.
+  title: Pipecat Cloud Builds API
+  description: REST control API for Pipecat Cloud, the hosted platform for deploying and operating agents built with the open-source Pipecat Python framework.
   termsOfService: https://www.daily.co/legal/terms-of-service/
   contact:
     name: Pipecat / Daily Support
@@ -24,7 +24,7 @@ paths:
       operationId: listBuilds
       tags:
       - Builds
-      summary: List builds.
+      summary: List builds
       responses:
         '200':
           description: A list of builds.
@@ -32,7 +32,7 @@ paths:
       operationId: createBuild
       tags:
       - Builds
-      summary: Create a new build.
+      summary: Create a new build
       responses:
         '201':
           description: Build created.
@@ -41,7 +41,7 @@ paths:
       operationId: getBuild
       tags:
       - Builds
-      summary: Get build status.
+      summary: Get build status
       parameters:
       - name: id
         in: path
@@ -56,7 +56,7 @@ paths:
       operationId: getBuildLogs
       tags:
       - Builds
-      summary: Get build logs.
+      summary: Get build logs
       parameters:
       - name: id
         in: path
@@ -71,7 +71,7 @@ paths:
       operationId: getBuildUploadUrl
       tags:
       - Builds
-      summary: Get a pre-signed URL for uploading build context.
+      summary: Get a pre-signed URL for uploading build context
       responses:
         '200':
           description: Pre-signed upload URL.

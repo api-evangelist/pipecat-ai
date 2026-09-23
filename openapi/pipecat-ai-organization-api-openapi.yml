@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Pipecat Cloud Agents Organization API
-  description: REST control API for Pipecat Cloud, the hosted platform for deploying and operating agents built with the open-source Pipecat Python framework. The Pipecat framework itself is an SDK (the pipecat-ai Python library) and does not expose a REST API; its interface is Python Pipelines, Frames, FrameProcessors, Services, and Transports (Daily WebRTC, SmallWebRTC, LiveKit, FastAPI WebSocket, and telephony serializers). This document models only the documented Pipecat Cloud REST control plane - managing agents, starting and stopping sessions, builds, secrets, organization properties, and regions. Realtime media (audio/video) flows over WebRTC/WebSocket transports negotiated out of band and is not modeled as REST here.
+  title: Pipecat Cloud Organization API
+  description: REST control API for Pipecat Cloud, the hosted platform for deploying and operating agents built with the open-source Pipecat Python framework.
   termsOfService: https://www.daily.co/legal/terms-of-service/
   contact:
     name: Pipecat / Daily Support
@@ -24,7 +24,7 @@ paths:
       operationId: getProperties
       tags:
       - Organization
-      summary: Get organization properties.
+      summary: Get organization properties
       responses:
         '200':
           description: Organization properties.
@@ -32,7 +32,7 @@ paths:
       operationId: updateProperties
       tags:
       - Organization
-      summary: Update organization properties.
+      summary: Update organization properties
       responses:
         '200':
           description: Organization properties updated.
@@ -41,7 +41,7 @@ paths:
       operationId: listRegions
       tags:
       - Organization
-      summary: List available regions.
+      summary: List available regions
       responses:
         '200':
           description: A list of regions.

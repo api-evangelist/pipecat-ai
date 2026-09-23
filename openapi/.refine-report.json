@@ -1,11 +1,7 @@
 {
   "provider": "pipecat-ai",
   "sources": [
-    "pipecat-ai-agents-api-openapi.yml",
-    "pipecat-ai-builds-api-openapi.yml",
-    "pipecat-ai-organization-api-openapi.yml",
-    "pipecat-ai-secrets-api-openapi.yml",
-    "pipecat-ai-sessions-api-openapi.yml"
+    "_original/pipecat-ai-openapi.yml"
   ],
   "outputs": [
     "pipecat-ai-agents-api-openapi.yml",
@@ -17,6 +13,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "pipecat-ai-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "pipecat-ai-agents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pipecat-ai-builds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pipecat-ai-organization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pipecat-ai-secrets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pipecat-ai-sessions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
