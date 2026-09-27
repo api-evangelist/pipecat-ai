@@ -8,16 +8,22 @@ description: Pipecat is an open-source Python framework (created by Daily) for b
   SmallWebRTC, telephony). Pipecat Cloud adds a hosted platform with a REST control
   API for deploying agents and starting/stopping agent sessions at scale.
 deliveryModel:
-  model: saas
-  open_source: false
+  model: open-core
+  license: BSD-2-Clause
+  license_evidence:
+    repo: pipecat-ai/pipecat
+    spdx: BSD-2-Clause
+    stars: 15852
+  open_source: true
   commercial: true
   callable_host: true
-  label: Hosted service · you call their endpoint
-  confidence: high
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: medium
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
