@@ -118,13 +118,6 @@ paths:
         '200':
           description: Session details.
 components:
-  parameters:
-    AgentId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
     AgentCreateRequest:
       type: object
@@ -141,6 +134,13 @@ components:
         profile:
           type: string
           description: Compute profile (e.g., agent-1x, agent-2x, agent-3x).
+  parameters:
+    AgentId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http
