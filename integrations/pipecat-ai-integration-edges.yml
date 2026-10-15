@@ -1,0 +1,622 @@
+edges:
+- partner_name: assemblyai
+  partner: assemblyai
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/assemblyai
+  coverage_role:
+  - stt
+  framework_signals:
+    packages:
+    - assemblyai
+    roles:
+    - stt
+    vendor_domain: assemblyai.com
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: amazon-transcribe
+  partner: amazon-transcribe
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/aws
+  coverage_role:
+  - stt
+  framework_signals:
+    packages:
+    - aws
+    roles:
+    - stt
+    vendor_domain: aws.amazon.com
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: amazon-polly
+  partner: amazon-polly
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/aws
+  coverage_role:
+  - tts
+  framework_signals:
+    packages:
+    - aws
+    roles:
+    - tts
+    vendor_domain: aws.amazon.com
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: microsoft-cognitive-services
+  partner: microsoft-cognitive-services
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/azure
+  coverage_role:
+  - stt
+  - tts
+  framework_signals:
+    packages:
+    - azure
+    roles:
+    - stt
+    - tts
+    vendor_domain: azure.microsoft.com
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: bland-ai
+  partner: bland-ai
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/bland
+  coverage_role:
+  - tts
+  framework_signals:
+    packages:
+    - bland
+    roles:
+    - tts
+    vendor_domain: bland.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: camb-ai
+  partner: camb-ai
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/camb
+  coverage_role:
+  - tts
+  framework_signals:
+    packages:
+    - camb
+    roles:
+    - tts
+    vendor_domain: camb.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: cartesia-ai
+  partner: cartesia-ai
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/cartesia
+  coverage_role:
+  - stt
+  - tts
+  framework_signals:
+    packages:
+    - cartesia
+    roles:
+    - stt
+    - tts
+    vendor_domain: cartesia.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: deepgram
+  partner: deepgram
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/deepgram
+  coverage_role:
+  - stt
+  - tts
+  framework_signals:
+    packages:
+    - deepgram
+    roles:
+    - stt
+    - tts
+    vendor_domain: deepgram.com
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: elevenlabs
+  partner: elevenlabs
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/elevenlabs
+  coverage_role:
+  - stt
+  - tts
+  framework_signals:
+    packages:
+    - elevenlabs
+    roles:
+    - stt
+    - tts
+    vendor_domain: elevenlabs.io
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: fal-ai
+  partner: fal-ai
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/fal
+  coverage_role:
+  - stt
+  framework_signals:
+    packages:
+    - fal
+    roles:
+    - stt
+    vendor_domain: fal.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: fish-audio
+  partner: fish-audio
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/fish
+  coverage_role:
+  - tts
+  framework_signals:
+    packages:
+    - fish
+    roles:
+    - tts
+    vendor_domain: fish.audio
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: gladia
+  partner: gladia
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/gladia
+  coverage_role:
+  - stt
+  framework_signals:
+    packages:
+    - gladia
+    roles:
+    - stt
+    vendor_domain: gladia.io
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: google-cloud-speech-to-text
+  partner: google-cloud-speech-to-text
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/google
+  coverage_role:
+  - stt
+  framework_signals:
+    packages:
+    - google
+    roles:
+    - stt
+    vendor_domain: cloud.google.com
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: google-cloud-text-to-speech
+  partner: google-cloud-text-to-speech
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/google
+  coverage_role:
+  - tts
+  framework_signals:
+    packages:
+    - google
+    roles:
+    - tts
+    vendor_domain: cloud.google.com
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: gradium
+  partner: gradium
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/gradium
+  coverage_role:
+  - stt
+  - tts
+  framework_signals:
+    packages:
+    - gradium
+    roles:
+    - stt
+    - tts
+    vendor_domain: gradium.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: groq
+  partner: groq
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/groq
+  coverage_role:
+  - stt
+  - tts
+  framework_signals:
+    packages:
+    - groq
+    roles:
+    - stt
+    - tts
+    vendor_domain: groq.com
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: hume-ai
+  partner: hume-ai
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/hume
+  coverage_role:
+  - tts
+  framework_signals:
+    packages:
+    - hume
+    roles:
+    - tts
+    vendor_domain: hume.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: inworld
+  partner: inworld
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/inworld
+  coverage_role:
+  - tts
+  framework_signals:
+    packages:
+    - inworld
+    roles:
+    - tts
+    vendor_domain: inworld.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: minimax-ai
+  partner: minimax-ai
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/minimax
+  coverage_role:
+  - tts
+  framework_signals:
+    packages:
+    - minimax
+    roles:
+    - tts
+    vendor_domain: minimax.io
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: mistral
+  partner: mistral
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/mistral
+  coverage_role:
+  - stt
+  - tts
+  framework_signals:
+    packages:
+    - mistral
+    roles:
+    - stt
+    - tts
+    vendor_domain: mistral.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: neuphonic
+  partner: neuphonic
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/neuphonic
+  coverage_role:
+  - tts
+  framework_signals:
+    packages:
+    - neuphonic
+    roles:
+    - tts
+    vendor_domain: neuphonic.com
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: nvidia-nim
+  partner: nvidia-nim
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/nvidia
+  coverage_role:
+  - stt
+  - tts
+  framework_signals:
+    packages:
+    - nvidia
+    roles:
+    - stt
+    - tts
+    vendor_domain: nvidia.com
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: openai
+  partner: openai
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/openai
+  coverage_role:
+  - stt
+  - tts
+  framework_signals:
+    packages:
+    - openai
+    roles:
+    - stt
+    - tts
+    vendor_domain: openai.com
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: resemble-ai
+  partner: resemble-ai
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/resembleai
+  coverage_role:
+  - tts
+  framework_signals:
+    packages:
+    - resembleai
+    roles:
+    - tts
+    vendor_domain: resemble.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: rime-ai
+  partner: rime-ai
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/rime
+  coverage_role:
+  - tts
+  framework_signals:
+    packages:
+    - rime
+    roles:
+    - tts
+    vendor_domain: rime.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: sarvam
+  partner: sarvam
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/sarvam
+  coverage_role:
+  - stt
+  - tts
+  framework_signals:
+    packages:
+    - sarvam
+    roles:
+    - stt
+    - tts
+    vendor_domain: sarvam.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: smallest-ai
+  partner: smallest-ai
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/smallest
+  coverage_role:
+  - stt
+  - tts
+  framework_signals:
+    packages:
+    - smallest
+    roles:
+    - stt
+    - tts
+    vendor_domain: smallest.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: speechify
+  partner: speechify
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/speechify
+  coverage_role:
+  - tts
+  framework_signals:
+    packages:
+    - speechify
+    roles:
+    - tts
+    vendor_domain: speechify.com
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: speechmatics
+  partner: speechmatics
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/speechmatics
+  coverage_role:
+  - stt
+  - tts
+  framework_signals:
+    packages:
+    - speechmatics
+    roles:
+    - stt
+    - tts
+    vendor_domain: speechmatics.com
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: together-ai
+  partner: together-ai
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/together
+  coverage_role:
+  - stt
+  - tts
+  framework_signals:
+    packages:
+    - together
+    roles:
+    - stt
+    - tts
+    vendor_domain: together.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+- partner_name: xai
+  partner: xai
+  partner_match: domain
+  channel: provider-built
+  direction: provider-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/xai
+  coverage_role:
+  - stt
+  - tts
+  framework_signals:
+    packages:
+    - xai
+    roles:
+    - stt
+    - tts
+    vendor_domain: x.ai
+  matched_by: verified-domain-table
+  detected_by: sweep-voice-ai.py
+  first_seen: '2026-10-15'
+generated: '2026-10-15'
+method: searched
+checked:
+- https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services
