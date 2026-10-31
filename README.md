@@ -1,4 +1,4 @@
-# Pipecat (pipecat-ai)
+# Pipecat
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,97 +66,125 @@
 
 Pipecat is an open-source Python framework (created by Daily) for building realtime voice and multimodal AI agents. It orchestrates pipelines of frames through pluggable services (STT, LLM, TTS, vision) and transports (Daily WebRTC, WebSocket, SmallWebRTC, telephony). Pipecat Cloud adds a hosted platform with a REST control API for deploying agents and starting/stopping agent sessions at scale.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/pipecat-ai/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/pipecat-ai/refs/heads/main/apis.yml)
+**Areas:** Artificial Intelligence · Voice · Multi-Modal · Agents · Real-Time · Framework
 
-## Tags
+## Pipecat on APIs.io
 
-- AI
-- Voice
-- Multimodal
-- Agents
-- Realtime
-- Framework
+Everything profiled for Pipecat is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/pipecat-ai/](https://apis.io/providers/pipecat-ai/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Pipecat Framework (Python SDK)](https://apis.io/apis/pipecat-ai/pipecat-framework-python-sdk/) — Open-source (BSD 2-Clause) Python framework whose interface is the pipecat-ai library, not a REST API. Applications wire FrameProcessors into a Pipeline,…
+- [Transports (WebRTC/WebSocket)](https://apis.io/apis/pipecat-ai/transports-webrtc-websocket/) — Realtime media transport layer of the framework. Bidirectional audio, video, and data flow over Daily WebRTC, SmallWebRTC, LiveKit, FastAPI WebSocket…
+- [Pipecat Agents API](https://apis.io/apis/pipecat-ai/pipecat-ai-agents-api/) — Create, list, update, and delete deployed agents and inspect logs and sessions.
+- [Pipecat Builds API](https://apis.io/apis/pipecat-ai/pipecat-ai-builds-api/) — Build container images for agent deployments.
+- [Pipecat Organization API](https://apis.io/apis/pipecat-ai/pipecat-ai-organization-api/) — Organization properties and available regions.
+- [Pipecat Secrets API](https://apis.io/apis/pipecat-ai/pipecat-ai-secrets-api/) — Manage secret sets and individual secrets used by agents.
+- [Pipecat Sessions API](https://apis.io/apis/pipecat-ai/pipecat-ai-sessions-api/) — Start, stop, and proxy requests to running agent sessions.
 
-## APIs
+### Published properties
 
-### Pipecat Framework (Python SDK)
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Open-source (BSD 2-Clause) Python framework whose interface is the pipecat-ai library, not a REST API. Applications wire FrameProcessors into a Pipeline, where Frames carry audio, text, images, and control signals between pluggable AI Services (STT, LLM, TTS, vision) and client Transports.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.pipecat.ai/overview/introduction](https://docs.pipecat.ai/overview/introduction)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Pipecat Ai Agentic Access](https://apis.io/agentic-access/pipecat-ai/pipecat-ai-agentic-access/)
 
-- Framework
-- Python
-- SDK
-- Pipelines
-- Frames
+#### Collections (6)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.pipecat.ai/overview/introduction)
-- [API Reference](https://docs.pipecat.ai/server/introduction)
-- [GitHub](https://github.com/pipecat-ai/pipecat)
+- [Pipecat Cloud API](https://apis.io/collections/pipecat-ai/open-pipecat-ai/)
+- [Pipecat Cloud Agents API](https://apis.io/collections/pipecat-ai/open-pipecat-ai-agents-api/)
+- [Pipecat Cloud Agents Builds API](https://apis.io/collections/pipecat-ai/open-pipecat-ai-builds-api/)
+- [Pipecat Cloud Agents Organization API](https://apis.io/collections/pipecat-ai/open-pipecat-ai-organization-api/)
+- [Pipecat Cloud Agents Secrets API](https://apis.io/collections/pipecat-ai/open-pipecat-ai-secrets-api/)
+- [Pipecat Cloud Agents Sessions API](https://apis.io/collections/pipecat-ai/open-pipecat-ai-sessions-api/)
 
-### Pipecat Cloud (Agents/Sessions API)
+#### Security (2)
 
-Hosted REST control API (Bearer-token authenticated) for deploying and operating Pipecat agents on Pipecat Cloud - create/list/update/delete agents, start and stop agent sessions, manage builds, secrets, and organization properties.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://docs.pipecat.ai/api-reference/pipecat-cloud/rest-reference](https://docs.pipecat.ai/api-reference/pipecat-cloud/rest-reference)
-- **Base URL:** `https://api.pipecat.daily.co/v1`
+- [Pipecat Ai Authentication](https://apis.io/security/pipecat-ai/pipecat-ai-authentication/)
+- [Pipecat Ai Domain Security](https://apis.io/security/pipecat-ai/pipecat-ai-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Cloud
-- Agents
-- Sessions
-- REST
-- Deployment
+Published plans, tiers and prices.
 
-#### Properties
+- [Pipecat Ai Plans Pricing](https://apis.io/plans/pipecat-ai/pipecat-ai-plans-pricing/)
 
-- [Documentation](https://docs.pipecat.ai/overview/cloud)
-- [API Reference](https://docs.pipecat.ai/api-reference/pipecat-cloud/rest-reference)
-- [OpenAPI](openapi/pipecat-ai-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/pipecat-ai.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/pipecat-ai.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Transports (WebRTC/WebSocket)
+Published request limits.
 
-Realtime media transport layer of the framework. Bidirectional audio, video, and data flow over Daily WebRTC, SmallWebRTC, LiveKit, FastAPI WebSocket server, and telephony serializers (Twilio, Telnyx, Plivo, Exotel). These are SDK transport classes, not a hosted public REST/WebSocket control API.
+- [Pipecat Ai Rate Limits](https://apis.io/rate-limits/pipecat-ai/pipecat-ai-rate-limits/)
 
-- **Human URL:** [https://docs.pipecat.ai/server/services/supported-services](https://docs.pipecat.ai/server/services/supported-services)
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Transports
-- WebRTC
-- WebSocket
-- Telephony
-- Realtime
+- [Pipecat Ai Finops](https://apis.io/finops/pipecat-ai/pipecat-ai-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://docs.pipecat.ai/server/services/supported-services)
-- [GitHub](https://github.com/pipecat-ai/pipecat)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-## Common Properties
-
-- [GitHub Organization](https://github.com/pipecat-ai)
-- [LinkedIn](https://www.linkedin.com/company/daily-co)
 - [Website](https://www.pipecat.ai)
 - [Documentation](https://docs.pipecat.ai)
-- [Plans](plans/pipecat-ai-plans-pricing.yml)
-- [Rate Limits](rate-limits/pipecat-ai-rate-limits.yml)
-- [Fin Ops](finops/pipecat-ai-finops.yml)
+- [GitHub](https://github.com/pipecat-ai)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 27.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 46.1 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.9** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/pipecat-ai/](https://apis.io/providers/pipecat-ai/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Pipecat: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/pipecat-ai/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
